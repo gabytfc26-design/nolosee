@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Flores — Para vos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      height:100vh;
+      background:#0b0f0d;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      overflow:hidden;
+      font-family:Poppins,sans-serif;
+      color:white;
+      text-align:center;
+    }
+    h1{font-size:26px;font-weight:700;margin-bottom:8px}
+    .accent{color:#ffeb3b}
+    p{font-size:16px;color:#ddd}
+
+    .scene{
+      position:relative;
+      width:100%;
+      height:60%;
+      display:flex;
+      justify-content:center;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+    .flower{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin:0 20px;
+      transform:translateY(100%);
+      animation:grow 2s ease-out forwards;
+    }
+    .flower:nth-child(2){animation-delay:0.5s}
+    .flower:nth-child(3){animation-delay:1s}
+
+    .stem{
+      width:6px;height:120px;
+      background:linear-gradient(#1e4620,#2e7d32);
+      border-radius:3px;
+    }
+    .leaf{
+      position:absolute;
+      width:40px;height:20px;
+      background:linear-gradient(#1e4620,#2e7d32);
+      border-radius:50%;
+    }
+    .leaf.left{left:-35px;top:50%}
+    .leaf.right{right:-35px;top:65%}
+
+    .petals{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      margin-bottom:-15px;
+    }
+    .petal{
+      width:50px;height:50px;
+      background:radial-gradient(circle at 30% 30%,#fff176,#fdd835);
+      border-radius:50%;
+      margin:0 -10px;
+      z-index:1;
+    }
+    .center{
+      position:absolute;
+      width:28px;height:28px;
+      background:#ffeb3b;
+      border-radius:50%;
+      z-index:2;
+      box-shadow:0 0 8px rgba(255,235,59,0.7);
+    }
+
+    @keyframes grow{
+      from{transform:translateY(100%) scale(0.5);opacity:0}
+      to{transform:translateY(0) scale(1);opacity:1}
+    }
+
+    /* sparkles */
+    .sparkle{
+      position:absolute;
+      background:#c8ff8f;
+      border-radius:50%;
+      animation:twinkle 4s infinite;
+    }
+    @keyframes twinkle{
+      0%,100%{opacity:0}
+      50%{opacity:1}
+    }
+  </style>
+</head>
+<body>
+  <h1>Esto es para vos, <span class="accent">te merecés esto y mucho más</span></h1>
+  <p>Un regalo especial en forma de flores 🌼</p>
+
+  <div class="scene">
+    <div class="flower">
+      <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+      </div>
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+    </div>
+    <div class="flower">
+      <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+      </div>
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+    </div>
+    <div class="flower">
+      <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+      </div>
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+    </div>
+  </div>
+
+  <script>
+    // generar sparkles
+    for(let i=0;i<50;i++){
+      const s=document.createElement('div');
+      s.className='sparkle';
+      const size=Math.random()*3+2;
+      s.style.width=size+'px';
+      s.style.height=size+'px';
+      s.style.left=Math.random()*100+'%';
+      s.style.top=Math.random()*100+'%';
+      s.style.animationDelay=(Math.random()*4)+'s';
+      document.body.appendChild(s);
+    }
+  </script>
+</body>
+</html>
